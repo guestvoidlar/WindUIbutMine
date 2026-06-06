@@ -48,19 +48,19 @@ function Element:New(Config)
     )
 
     Button.UIElements.ButtonIcon.Size = UDim2.new(0,20,0,20)
-    Button.UIElements.ButtonIcon.Parent = Button.Justify == "Between" and Button.ButtonFrame.UIElements.Main or Button.ButtonFrame.UIElements.Container.TitleFrame
-    Button.UIElements.ButtonIcon.LayoutOrder = Button.IconAlign == "Left" and -99999 or 99999
-    Button.UIElements.ButtonIcon.AnchorPoint = Vector2.new(1,0.5)
-    Button.UIElements.ButtonIcon.Position = UDim2.new(1,0,0.5,0)
+    Button.ButtonFrame:Colorize(Button.UIElements.ButtonIcon.ImageLabel, "ImageColor3")
 
     if Button.IconColor then
         if Button.ButtonFrame.Uncolorize then
             Button.ButtonFrame:Uncolorize(Button.UIElements.ButtonIcon.ImageLabel)
         end
         Button.UIElements.ButtonIcon.ImageLabel.ImageColor3 = Button.IconColor
-    else
-        Button.ButtonFrame:Colorize(Button.UIElements.ButtonIcon.ImageLabel, "ImageColor3")
     end
+
+    Button.UIElements.ButtonIcon.Parent = Button.Justify == "Between" and Button.ButtonFrame.UIElements.Main or Button.ButtonFrame.UIElements.Container.TitleFrame
+    Button.UIElements.ButtonIcon.LayoutOrder = Button.IconAlign == "Left" and -99999 or 99999
+    Button.UIElements.ButtonIcon.AnchorPoint = Vector2.new(1,0.5)
+    Button.UIElements.ButtonIcon.Position = UDim2.new(1,0,0.5,0)
 
     function Button:Lock()
         Button.Locked = true
